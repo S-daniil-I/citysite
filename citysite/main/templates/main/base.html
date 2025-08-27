@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Zhodino{% endblock %}</title>
+{% load static %}
+    <link rel="stylesheet" href="{% static 'main/style.css' %}">
+</head>
+<body>
+<header>
+        <h1>Zhodino</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'enterprises' %}">Предприятия</a></li>
+                <li><a href="{% url 'sport' %}">Спорт</a></li>
+                <li><a href="{% url 'leisure' %}">Отдых</a></li>
+                <li><a href="{% url 'services' %}">Услуги</a></li>
+            </ul>
+        </nav>
+    </header>
+<main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

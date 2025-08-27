@@ -1,4 +1,19 @@
-еще раз    <h1>Предприятия Жодино</h1>
-    <p>Здесь будет информация о предприятиях города.</p>
-</body>
-</html>
+{% extends "main/base.html" %}
+{% block title %}Предприятия{% endblock %}
+{% block content %}
+    <h2>Список предприятий</h2>
+    <ul>
+        {% for enterprise in enterprises %}
+        <li>
+            <strong>{{ enterprise.name }}</strong><br>
+            {{ enterprise.description }}<br>
+            Адрес: {{ enterprise.address }}<br>
+            {% if enterprise.image %}
+                <img src="{{ enterprise.image.url }}" alt="{{ enterprise.name }}" width="200">
+            {% endif %}
+        </li>
+    {% empty %}
+        <li>Пока нет предприятий.</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
