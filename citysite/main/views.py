@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from main.models import Enterprise, Leisure
+from main.models import Enterprise, Leisure, SportObject,ServiceCategory
 
 
 def index(request):
@@ -11,7 +11,8 @@ def enterprises(request):
     return render(request, 'main/enterprises.html', {'enterprises': enterprises_list})
 
 def sport(request):
-    return render(request, 'main/sport.html')
+    sport_list=SportObject.objects.all()
+    return render(request,'main/sport.html', {'sports': sport_list})
 
 def leisure(request):
     leisure_list= Leisure.objects.all()
@@ -19,4 +20,5 @@ def leisure(request):
 
 
 def services(request):
-    return render(request, 'main/services.html')
+    services_list = ServiceCategory.objects.all()
+    return render(request, 'main/services.html', {'services': services_list})

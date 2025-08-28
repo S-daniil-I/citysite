@@ -1,13 +1,20 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Спорт</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'main/style.css' %}">
-</head>
-<body>
-    <h1>Спорт Жодино</h1>
-    <p>Здесь будет информация о спорте города.</p>
-</body>
-</html>
+{% extends "main/base.html" %}
+{% block title %} Спорт{% endblock %}
+
+{% block content %}
+    <h2>Спорт объекты</h2>
+    <ul>
+    {% for sport in sports %}
+    <li>
+        <strong>{{ sport.name }}</strong>
+        {{ sport.description }}<br>
+        Адрес:{{ sport.address }}<br>
+        {% if sport.image %}
+                <img src="{{ sport.image.url }}" alt="{{ sport.name }}" width="200">
+            {% endif %}
+        </li>
+    {% empty %}
+        <li>Пока нет спорт объектов.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
