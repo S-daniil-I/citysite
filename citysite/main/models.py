@@ -25,8 +25,10 @@ class ServiceCategory(models.Model):
 
 class Service(models.Model):
     name = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200, unique=True, blank=True)
     description = models.TextField(blank=True)
     category = models.ForeignKey(ServiceCategory, on_delete=models.CASCADE)
+    address = models.CharField(max_length=300, blank=True)
     working_hours = models.CharField(max_length=200, blank=True)
     image = models.ImageField(upload_to='service_photos/', blank=True, null=True)
 
